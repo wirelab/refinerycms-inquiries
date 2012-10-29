@@ -15,24 +15,24 @@ module Refinery
       def create
         @inquiry = ::Refinery::Inquiries::Inquiry.new(params[:inquiry])
 
-        if @inquiry.save
-          if @inquiry.ham?
-            begin
-              ::Refinery::Inquiries::InquiryMailer.notification(@inquiry, request).deliver
-            rescue
-              logger.warn "There was an error delivering an inquiry notification.\n#{$!}\n"
-            end
-
-            begin
-              ::Refinery::Inquiries::InquiryMailer.confirmation(@inquiry, request).deliver
-            rescue
-              logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
-            end if ::Refinery::Inquiries::Setting.send_confirmation?
+        @inquiry.save
+        if @inquiry.ham?
+          begin
+            ::Refinery::Inquiries::InquiryMailer.notification(@inquiry, request).deliver
+          rescue
+            logger.warn "There was an error delivering an inquiry notification.\n#{$!}\n"
           end
 
-          redirect_to refinery.thank_you_inquiries_inquiries_path
-        else
-          render :action => 'new'
+          begin
+            ::Refinery::Inquiries::InquiryMailer.confirmation(@inquiry, request).deliver
+          rescue
+            logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
+          end if ::Refinery::Inquiries::Setting.send_confirmation?
+        end
+
+        respond_to do |format|
+          format.html { redirect_to refinery.thank_you_inquiries_inquiries_path }
+          format.js { }
         end
       end
 
