@@ -46,6 +46,46 @@
         <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => t('.click_to_email')} %>]
       </td>
     </tr>
+    <% unless @inquiry.salutation.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.salutation') %></strong>
+        </td>
+        <td>
+          <%= @inquiry.salutation %>
+        </td>
+      </tr>
+    <% end %>
+    <% unless @inquiry.address.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.address') %></strong>
+        </td>
+        <td>
+          <%= @inquiry.address %>
+        </td>
+      </tr>
+    <% end %>
+    <% unless @inquiry.postalcode.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.postalcode') %></strong>
+        </td>
+        <td>
+          <%= @inquiry.postalcode %>
+        </td>
+      </tr>
+    <% end %>
+    <% unless @inquiry.city.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.city') %></strong>
+        </td>
+        <td>
+          <%= @inquiry.city %>
+        </td>
+      </tr>
+    <% end %>
     <% unless @inquiry.phone.blank? %>
       <tr>
         <td>
