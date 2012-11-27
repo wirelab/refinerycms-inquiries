@@ -37,6 +37,12 @@ nl:
             from: Van
             click_to_email: Klik hier om een e-mail te sturen naar dit adres
             phone: Telefoonnummer
+            salutation: Aanhef
+            salutation_male: "Dhr."
+            salutation_female: "Mevr."
+            address: Adres
+            postalcode: Postcode
+            city: Plaats
             date: Datum
             message: Bericht
         settings:
@@ -64,6 +70,12 @@ nl:
           email: E-mail
           phone: Telefoon
           message: Bericht
+          salutation: Aanhef
+          salutation_male: "Dhr."
+          salutation_female: "Mevr."
+          address: Adres
+          postalcode: Postcode
+          city: Plaats
           closing_line: Met vriendelijk groet,
           ps: P.S. Alle vragen woren opgeslagen in de sectie "Contactaanvragen" van Refinery.
   activerecord:
@@ -74,4 +86,10 @@ nl:
         name: Naam
         email: 'E-mail'
         phone: Telefoon
+        salutation: Aanhef
+        salutation_male: "Dhr."
+        salutation_female: "Mevr."
+        address: Adres
+        postalcode: Postcode
+        city: Plaats
         message: Bericht
