@@ -16,11 +16,11 @@ module Refinery
       validates :email, :format=> { :with =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
       validates :message, :presence => true
 
-      acts_as_indexed :fields => [:name, :email, :message, :phone]
+      acts_as_indexed :fields => [:name, :email, :message, :phone, :address, :postalcode, :city]
 
       default_scope :order => 'created_at DESC'
 
-      attr_accessible :name, :phone, :message, :email
+      attr_accessible :salutation, :name, :phone, :message, :email, :address, :postalcode, :city
 
       def self.latest(number = 7, include_spam = false)
         include_spam ? limit(number) : ham.limit(number)
